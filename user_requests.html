@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="panel glass">
+  <h2>My Decryption Key Requests</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Document</th>
+        <th>Filename</th>
+        <th>Status</th>
+        <th>Admin Response</th>
+        <th>Requested At</th>
+        <th>Reviewed At</th>
+        <th>Decryption Key</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+      <tr>
+        <td>{{ row.id }}</td>
+        <td>{{ row.document_title }}</td>
+        <td>{{ row.original_filename }}</td>
+        <td>{{ row.status }}</td>
+        <td>{{ row.admin_response or "-" }}</td>
+        <td>{{ row.created_at }}</td>
+        <td>{{ row.reviewed_at or "-" }}</td>
+        <td>
+          {% if row.status == 'approved' %}
+            <code>{{ row.decryption_key }}</code>
+          {% else %}
+            -
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

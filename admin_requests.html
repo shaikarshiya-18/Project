@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="panel glass">
+  <h2>Decryption Key Requests</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>User</th>
+        <th>Document</th>
+        <th>Message</th>
+        <th>Status</th>
+        <th>Requested At</th>
+        <th>Admin Response</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+      <tr>
+        <td>{{ row.id }}</td>
+        <td>{{ row.requester_name }}</td>
+        <td>{{ row.document_title }}</td>
+        <td>{{ row.request_message }}</td>
+        <td>{{ row.status }}</td>
+        <td>{{ row.created_at }}</td>
+        <td>{{ row.admin_response or "-" }}</td>
+        <td>
+          {% if row.status == 'pending' %}
+          <form method="post" action="{{ url_for('admin_request_action', request_id=row.id) }}" class="form-grid">
+            <input type="text" name="admin_response" placeholder="Optional response">
+            <div class="actions">
+              <button class="btn primary" type="submit" name="decision" value="approve">Approve</button>
+              <button class="btn" type="submit" name="decision" value="reject">Reject</button>
+            </div>
+          </form>
+          {% else %}
+          Reviewed
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

@@ -1,0 +1,53 @@
+1. Malware Upload
+
+Users may upload infected files (virus, ransomware, trojan).
+If downloaded later, it can harm other users or the system.
+
+2. Unauthorized Access
+
+If cloud storage permissions are misconfigured:
+
+Files may become public.
+
+Sensitive data can leak.
+
+3. Data Breach
+
+Without encryption:
+
+Uploaded files can be intercepted.
+
+Confidential information may be exposed.
+
+4. File Type Exploits
+
+Attackers can upload:
+
+Executable files (.exe, .php, .js)
+
+Script files that may run on the server
+This can lead to Remote Code Execution (RCE).
+
+5. Denial of Service (DoS)
+
+Large or multiple file uploads may:
+
+Overload server storage
+
+Increase cloud costs
+
+Crash the application
+
+6. Broken Access Control
+
+If access control is weak:
+
+One user may access another user’s files.
+
+7. Insecure Direct Object Reference (IDOR)
+
+If file URLs are predictable:
+
+Attackers can guess file paths
+
+Download private files

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="panel glass">
+  <h2><i class="bi bi-person-plus"></i> User Registration (6 fields)</h2>
+  <form method="post" class="form-grid two-cols">
+
+    <label>
+      Full Name
+      <input type="text" name="full_name" required>
+    </label>
+
+    <label>
+      Email
+      <input type="email" name="email" required>
+    </label>
+
+    <label>
+      Username
+      <input type="text" name="username" required>
+    </label>
+
+    <label>
+      Password
+      <input type="password" name="password" required>
+    </label>
+
+  <label>
+  Phone
+  <input 
+    type="text"
+    name="phone"
+    id="phone"
+    maxlength="10"
+    minlength="10"
+    inputmode="numeric"
+    placeholder="Enter 10-digit number"
+    required
+    oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+</label>
+
+    <label>
+      Organization
+      <input type="text" name="organization" required>
+    </label>
+
+    <button type="submit" class="btn primary">Register</button>
+
+  </form>
+</section>
+{% endblock %}

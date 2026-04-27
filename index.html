@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero glass">
+  <h1>Security Implications of Direct User File Uploads to Cloud Storage</h1>
+  <p>
+    Analyze upload credential risks, encryption performance, callback integrity, and model training outcomes.
+    Admin and user dashboards include metrics, logs, and visual reports.
+  </p>
+  <div class="actions">
+    <a class="btn primary" href="{{ url_for('login') }}"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+    <a class="btn" href="{{ url_for('register') }}"><i class="bi bi-person-plus-fill"></i> Register</a>
+  </div>
+</section>
+
+<section class="grid cards3">
+  <article class="card glass">
+    <h3><i class="bi bi-key-fill"></i> Stage A</h3>
+    <p>Upload credential requesting and dispatching with policy controls and short-lived keys.</p>
+  </article>
+  <article class="card glass">
+    <h3><i class="bi bi-cloud-arrow-up-fill"></i> Stage B</h3>
+    <p>File upload and verification: type, size, overwrite checks, and credential validity.</p>
+  </article>
+  <article class="card glass">
+    <h3><i class="bi bi-broadcast-pin"></i> Stage C</h3>
+    <p>Callback verification and response hardening against spoofing and tampering attacks.</p>
+  </article>
+</section>
+{% endblock %}

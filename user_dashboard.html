@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="grid cards3">
+  <article class="metric-card glass"><h3><i class="bi bi-folder-fill"></i> Total Uploads</h3><p>{{ upload_count }}</p></article>
+  <article class="metric-card glass"><h3><i class="bi bi-graph-up"></i> Training Rows</h3><p>{{ metric_count }}</p></article>
+  <article class="metric-card glass"><h3><i class="bi bi-person-vcard-fill"></i> Profile</h3><p>{{ profile.username }}</p></article>
+
+  
+</section>
+
+<section class="panel glass">
+  <h2>User Dashboard - System Overview</h2>
+  <p>Name: {{ profile.full_name }} | Email: {{ profile.email }} | Organization: {{ profile.organization }}</p>
+</section>
+
+<section class="panel glass">
+  <h3>Your Recent Upload Visibility</h3>
+  <table>
+    <thead><tr><th>ID</th><th>Title</th><th>Uploaded At</th><th>File Size</th></tr></thead>
+    <tbody>
+      {% for row in my_uploads %}
+      <tr><td>{{ row.id }}</td><td>{{ row.document_title }}</td><td>{{ row.uploaded_at }}</td><td>{{ row.file_size }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

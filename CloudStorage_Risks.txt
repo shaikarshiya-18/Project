@@ -1,0 +1,19 @@
+Content:
+
+Cloud Storage Risks
+
+Direct user file uploads to cloud storage introduce several risks such as:
+
+1. Malicious File Uploads:
+   Attackers can upload infected files containing viruses or scripts.
+
+2. Data Leakage:
+   Sensitive data may be exposed if storage is not properly secured.
+
+3. Unauthorized Access:
+   Weak authentication allows attackers to access files.
+
+4. Misconfiguration:
+   Incorrect cloud settings can expose data publicly.
+
+To reduce risks, validation and encryption must be implemented.

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="panel glass narrow">
+  <h2>Decrypt and Download: {{ item.document_title }}</h2>
+  <p>Provide the decryption key to access the file.</p>
+  {% if approved_req %}
+    <p><strong>Approved key:</strong> <code>{{ approved_req.decryption_key }}</code></p>
+  {% else %}
+    <p>No approved key found for this file. Send a request from Search page.</p>
+  {% endif %}
+  <form method="post" class="form-grid">
+    <label>Decryption Key<input name="decryption_key" {% if approved_req %}value="{{ approved_req.decryption_key }}"{% endif %}></label>
+    <button type="submit" class="btn primary">Download</button>
+  </form>
+</section>
+{% endblock %}

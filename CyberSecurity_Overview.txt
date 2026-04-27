@@ -1,0 +1,15 @@
+Content:
+
+Cyber Security Overview
+
+Cyber security is the practice of protecting systems, networks, and data from digital attacks. 
+It focuses on maintaining confidentiality, integrity, and availability of information.
+
+In cloud storage systems, security becomes more critical because data is stored remotely and accessed over the internet.
+
+Common threats include:
+- Malware attacks
+- Unauthorized access
+- Data breaches
+
+Proper security measures such as encryption, authentication, and access control are essential.

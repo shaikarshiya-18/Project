@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Alert Message at very top -->
+{% if request.method == 'POST' and results|length == 0 %}
+  <div class="alert alert-danger" style="margin:0; border-radius:0;">
+    File name is not found
+  </div>
+{% endif %}
+
+<section class="panel glass">
+  <h2><i class="bi bi-search"></i> Search Files</h2>
+
+  <!-- Search Form -->
+  <form method="post" class="form-inline">
+    <input name="query" placeholder="Enter document title or filename" required>
+    <button class="btn primary" type="submit">Search</button>
+  </form>
+
+  <!-- Results Table -->
+  {% if results and results|length > 0 %}
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Filename</th>
+        <th>Uploaded At</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in results %}
+      <tr>
+        <td>{{ row.id }}</td>
+        <td>{{ row.document_title }}</td>
+        <td>{{ row.original_filename }}</td>
+        <td>{{ row.uploaded_at }}</td>
+        <td>
+          <form method="post" action="{{ url_for('user_request_key', file_id=row.id)}}" style="display:inline-block;">
+            <button class="btn" type="submit">Request Key</button>
+          </form>
+          <a class="btn" href="{{ url_for('user_download', file_id=row.id) }}">
+            Decrypt & Download
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+
+</section>
+{% endblock %}

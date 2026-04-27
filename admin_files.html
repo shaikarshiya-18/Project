@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="panel glass">
+  <h2>Uploaded Files</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Document Title</th>
+        <th>Uploaded At</th>
+        <th>File Size (bytes)</th>
+        <th>Key Generation Time (s)</th>
+        <th>Encryption Time (s)</th>
+        <th>Decryption Time (s)</th>
+        <th>Response Time (s)</th>
+        <th>Computational Overhead (s)</th>
+        <th>Total Change Rate</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+      <tr>
+        <td>{{ row.id }}</td>
+        <td>{{ row.document_title }}</td>
+        <td>{{ row.uploaded_at }}</td>
+        <td>{{ row.file_size }}</td>
+        <td>{{ "%.6f"|format(row.key_generation_time) }}</td>
+        <td>{{ "%.6f"|format(row.encryption_time) }}</td>
+        <td>{{ "%.6f"|format(row.decryption_time) }}</td>
+        <td>{{ "%.6f"|format(row.response_time) }}</td>
+        <td>{{ "%.6f"|format(row.computational_overhead) }}</td>
+        <td>{{ "%.6f"|format(row.total_change_rate) }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

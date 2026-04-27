@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="panel glass">
+  <h2>{{ page_title }}</h2>
+  <table>
+    <thead><tr><th>ID</th><th>Actor</th><th>Action</th><th>Details</th><th>Time</th></tr></thead>
+    <tbody>
+      {% for row in rows %}
+      <tr><td>{{ row.id }}</td><td>{{ row.actor }}</td><td>{{ row.action }}</td><td>{{ row.details }}</td><td>{{ row.created_at }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

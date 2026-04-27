@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title or "Security Implications" }}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="topbar glass">
+    <div class="brand"><i class="bi bi-shield-lock-fill"></i> Security Implications</div>
+    <nav>
+      <a href="{{ url_for('index') }}">Home</a>
+      {% if session.get('user_id') %}
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        {% if session.get('role') == 'admin' %}
+          <a href="{{ url_for('admin_upload') }}">Upload</a>
+          <a href="{{ url_for('admin_files') }}">Files</a>
+          <a href="{{ url_for('admin_requests') }}">Requests</a>
+          <a href="{{ url_for('admin_reports') }}">Reports</a>
+          <a href="{{ url_for('admin_logs') }}">Logs</a>
+        {% else %}
+          <a href="{{ url_for('user_search') }}">Search</a>
+          <a href="{{ url_for('user_requests') }}">My Requests</a>
+          <a href="{{ url_for('user_results') }}">Results</a>
+          <a href="{{ url_for('user_logs') }}">Logs</a>
+        {% endif %}
+        <a href="{{ url_for('logout') }}">Logout</a>
+      {% else %}
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('register') }}">Register</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <main class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer glass">{{ now_year }} Security Implications of Direct User File Uploads to Cloud Storage</footer>
+  <script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

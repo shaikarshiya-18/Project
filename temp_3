@@ -1,0 +1,10 @@
+✔ Validate file type (MIME + extension)
+✔ Limit file size
+✔ Rename uploaded files (random UUID)
+✔ Store outside web root
+✔ Use antivirus scanning
+✔ Apply strict access control
+✔ Use signed URLs for cloud storage
+✔ Enable encryption (HTTPS + at rest)
+✔ Set proper bucket permissions (private by default)
+✔ Monitor and log uploads

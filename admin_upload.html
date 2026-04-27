@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="panel glass narrow">
+  <h2><i class="bi bi-cloud-upload-fill"></i> Admin Upload (Blockchain + AES)</h2>
+  <form method="post" enctype="multipart/form-data" class="form-grid">
+    <label>Document Title<input name="document_title" required></label>
+    <label>Select File<input type="file" name="document" required></label>
+    <button type="submit" class="btn primary">Encrypt and Upload</button>
+  </form>
+</section>
+{% endblock %}
